@@ -1,9 +1,10 @@
 module.exports = function (app, db) {
     
-    // Add new product
+    // Update a product
     // http://localhost:4300/api/product
     // Sending a JSON body:
     // {
+    //     "id": "12",            
     //     "name": "ExampleProductName",
     //     "description": "Example product description",
     //     "price": 2.00,
@@ -14,7 +15,7 @@ module.exports = function (app, db) {
     // [
     //     {...},{...}
     // ]
-    app.post('/api/product/', (req, res) => {
+    app.put('/api/product/', (req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "*");
 
          var data = req.body;
@@ -28,40 +29,57 @@ module.exports = function (app, db) {
 
 function processProducts(req, res, db){
     for (var prod of req.body) {
-        insertProduct(prod, res, db);
+        updateProduct(prod, res, db);
     }
 }
 
 function processProduct(req, res, db){
     validateRequest(req, res);
-    insertProduct(req.body, res, db);
+    updateProduct(req.body, res, db);
 }
 
-function insertProduct(product, res, db){
+function checkIfExist(){
+    // TODO: check business
+}
+
+function updateProduct(product, res, db){
+    checkIfExist();
+
     var name = product.name;
     var description = product.description;
     var price = product.price;
     var currency = product.currency;
+    var id = product.id;
 
-    var sql = `insert into Products (name, description, price, currency) 
-            VALUES 
-            (?, ?, ?, ?);`;
+    if(!id){
+        res.status(400).send("ID is mandatory");
+    }
 
-    var values = [name, description, price, currency];
+    else{
+        var sql = `update Products
+                set name = ?, description = ?, price = ?, currency = ?
+                where id = ?;`;
 
-    db.serialize(function () {
-        db.run(sql, values, function (err) {
-            if (err)
-                res.status(500).send(err);
-            else
-                res.send();
+        var values = [name, description, price, currency, id];
+
+        console.log(sql);
+
+        db.serialize(function () {
+            db.run(sql, values, function (err) {
+                if (err)
+                    {console.error(err);
+                    res.status(500).send(err);
+                    }
+                else
+                    res.send();
+            });
         });
-    });
+    }
 }
 
 function validateRequest(req, res) {
     var fs = require('fs');
-    var schema = JSON.parse(fs.readFileSync('app/data/product-schema.json', 'utf8'));
+    var schema = JSON.parse(fs.readFileSync('app/data/product-schema-update.json', 'utf8'));
 
     var JaySchema = require('jayschema');
     var js = new JaySchema();
@@ -73,8 +91,4 @@ function validateRequest(req, res) {
             res.status(400).send(errs);
         }
     });
-
-    if (req.body.id) {
-        res.status(400).send("ID cannot be submmited");
-    }
 }

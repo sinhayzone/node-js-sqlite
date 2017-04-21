@@ -1,10 +1,8 @@
 # node-js-sqlite
-Simple NodeJS API with crud routes. With Sqlite database
-
-Run the backend:
+Simple NodeJS Rest API with CRUD routes.
+Using SQLite database
 
 ## How to Install
-
 ```sh
 $ git clone https://github.com/lcarlesso/node-js-sqlite.git
 $ npm install 
@@ -12,6 +10,8 @@ $ npm run dev
 ```
 
 It will be running on port 4300
+
+------------
 
 ### How to use
 
@@ -23,6 +23,54 @@ http://localhost:4300/api/product
 Sending a JSON body:
 ```javascript
 {
+	"name": "ExampleProductName",
+	"description": "Example product description",
+	"price": 2.00,
+	"currency": "EUR" 
+}
+```
+or an array of products:
+```javascript
+[
+	{...},{...}
+]
+```
+
+---------------------------------------------
+
+#### PUT
+* **Update a product:**
+```
+http://localhost:4300/api/product
+```
+Sending a JSON body: **ID is the only MANDATORY**
+```javascript
+{
+	"id": "1",
+	"name": "ExampleProductName",
+	"description": "Example product description",
+	"price": 2.00,
+	"currency": "EUR" 
+}
+```
+or an array of products:
+```javascript
+[
+	{...},{...}
+]
+```
+
+---------------------------------------------
+
+#### DELETE
+* **Delete a product:**
+```
+http://localhost:4300/api/product
+```
+Sending a JSON body: **ID is the only MANDATORY**
+```javascript
+{
+	"id": "1",
 	"name": "ExampleProductName",
 	"description": "Example product description",
 	"price": 2.00,
