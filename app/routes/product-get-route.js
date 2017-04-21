@@ -10,12 +10,12 @@ module.exports = function(app, db) {
     processData(res, "SELECT * FROM products");
   });
 
-  // Load products: http://localhost:8000/api/product/price
+  // Load products: http://localhost:8000/api/product/sort/price
   app.get('/api/product/sort/:way', (req, res) => {
     processData(res, "SELECT * FROM products order by " + req.params.way);
   });
 
-  // Load products: http://localhost:8000/api/product/asc/price [ASC or DESC]
+  // Load products: http://localhost:8000/api/product/sort/asc/price [ASC or DESC]
   app.get('/api/product/sort/:direction/:way', (req, res) => {
     var way = req.params.way;
     var direction = req.params.direction;
@@ -50,6 +50,3 @@ module.exports = function(app, db) {
       res.status(404).send("Product not found");
   }
 };
-
-
-
