@@ -100,7 +100,7 @@ http://localhost:4300/api/product/
 ```
 ______
 
-* **Load products by attribute:** 
+* **Load products by any attribute and value:** 
 ```
 http://localhost:4300/api/product/$attribute/$name
 ```
@@ -111,7 +111,7 @@ $attribute = ['name', 'price', 'currency', 'description']
 (this is not checked values, wrong parameters will return a DB error.)
 _____
 
-* **Load products** 
+* **Load all products sorting by attribute** 
 ```
 http://localhost:4300/api/product/sort/$attribute
 ```
@@ -123,7 +123,7 @@ $attribute = ['name', 'price', 'currency', 'description']
 (this is not checked values, wrong parameters will return a DB error)
 ____
 
-* **Load products:**
+* **Load products sorting ASC or DESC by any attribute:**
 ```
 http://localhost:4300/api/product/sort/$direction/$attribute
 ```
