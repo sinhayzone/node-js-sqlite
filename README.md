@@ -44,22 +44,24 @@ or an array of products:
 http://localhost:4300/api/product/id/$id
 ```
 example: http://localhost:4300/api/product/id/15
-
+_____
 
 * **Load all products:**
 ```
 http://localhost:4300/api/product/
 ```
+______
 
 * **Load products by attribute:** 
 ```
 http://localhost:4300/api/product/$attribute/$name
 ```
-example: http://localhost:4300/api/product/price/24
-          http://localhost:4300/api/product/name/Suntone
-$attribute = ['name', 'price', 'currency', 'description']*
-
- * this is not checked values, wrong parameters will return a DB error.
+example: 
+- http://localhost:4300/api/product/price/24
+- http://localhost:4300/api/product/name/Suntone
+$attribute = ['name', 'price', 'currency', 'description']
+(this is not checked values, wrong parameters will return a DB error.)
+_____
 
 * **Load products** 
 ```
@@ -69,9 +71,9 @@ example:
 - http://localhost:4300/api/product/sort/price
 - http://localhost:4300/api/product/sort/name
 
-$attribute = ['name', 'price', 'currency', 'description']*
+$attribute = ['name', 'price', 'currency', 'description']
 (this is not checked values, wrong parameters will return a DB error)
-
+____
 
 * **Load products:**
 ```
@@ -84,6 +86,8 @@ example:
 $attribute = ['name', 'price', 'currency', 'description']*
 $direction [ASC or DESC]C]*
 (the direction is checked and when wrong will return a 401 business error)
+_____
+
 
 ### SQLite database
 The database is already populated with 30 random values from https://www.mockaroo.com/
