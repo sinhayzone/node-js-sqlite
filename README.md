@@ -13,9 +13,9 @@ It will be running on port 4300
 
 ------------
 
-### How to use
+## How to use
 
-#### POST
+### POST
 * **Add new product:**
 ```
 http://localhost:4300/api/product
@@ -38,7 +38,7 @@ or an array of products:
 
 ---------------------------------------------
 
-#### PUT
+### PUT
 * **Update a product:**
 ```
 http://localhost:4300/api/product
@@ -62,7 +62,7 @@ or an array of products:
 
 ---------------------------------------------
 
-#### DELETE
+### DELETE
 * **Delete a product:**
 ```
 http://localhost:4300/api/product
@@ -86,7 +86,7 @@ or an array of products:
 
 ---------------------------------------------
 
-#### GET
+### GET
 * **Load products by ID:**
 ```
 http://localhost:4300/api/product/id/$id
@@ -137,5 +137,5 @@ $direction [ASC or DESC]C]*
 _____
 
 
-### SQLite database
+## SQLite database
 The database is already populated with 30 random values from https://www.mockaroo.com/
