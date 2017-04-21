@@ -65,23 +65,25 @@ $attribute = ['name', 'price', 'currency', 'description']*
 ```
 http://localhost:4300/api/product/sort/$attribute
 ```
-example: http://localhost:4300/api/product/sort/price
-         http://localhost:4300/api/product/sort/name
+example: 
+- http://localhost:4300/api/product/sort/price
+- http://localhost:4300/api/product/sort/name
 
 $attribute = ['name', 'price', 'currency', 'description']*
- * this is not checked values, wrong parameters will return a DB error.
+(this is not checked values, wrong parameters will return a DB error)
 
 
 * **Load products:**
 ```
 http://localhost:4300/api/product/sort/$direction/$attribute
-	```
-example: http://localhost:4300/api/product/sort/asc/price
-         http://localhost:4300/api/product/sort/desc/price
+```
+example: 
+- http://localhost:4300/api/product/sort/asc/price
+- http://localhost:4300/api/product/sort/desc/price
+
 $attribute = ['name', 'price', 'currency', 'description']*
 $direction [ASC or DESC]C]*
-
-* the direction is checked and when wrong will return a 401 business error.
+(the direction is checked and when wrong will return a 401 business error)
 
 ### SQLite database
 The database is already populated with 30 random values from https://www.mockaroo.com/
