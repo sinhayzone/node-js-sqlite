@@ -51,30 +51,25 @@ function updateProduct(product, res, db){
     var currency = product.currency;
     var id = product.id;
 
-    if(!id){
-        res.status(400).send("ID is mandatory");
-    }
+    var sql = `update Products
+            set name = ?, description = ?, price = ?, currency = ?
+            where id = ?;`;
 
-    else{
-        var sql = `update Products
-                set name = ?, description = ?, price = ?, currency = ?
-                where id = ?;`;
+    var values = [name, description, price, currency, id];
 
-        var values = [name, description, price, currency, id];
+    console.log('Executing: ', sql);
 
-        console.log(sql);
-
-        db.serialize(function () {
-            db.run(sql, values, function (err) {
-                if (err)
-                    {console.error(err);
-                    res.status(500).send(err);
-                    }
-                else
-                    res.send();
-            });
+    db.serialize(function () {
+        db.run(sql, values, function (err) {
+            if (err)
+                {console.error(err);
+                res.status(500).send(err);
+                }
+            else
+                res.send();
         });
-    }
+    });
+
 }
 
 function validateRequest(req, res) {

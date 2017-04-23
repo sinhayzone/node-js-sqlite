@@ -46,10 +46,9 @@ function updateProduct(product, res, db){
 
     else{
         var sql = `delete from  Products where id = ?;`;
-
         var values = [id];
 
-        console.log(sql);
+        console.log('Executing: ', sql);
 
         db.serialize(function () {
             db.run(sql, values, function (err) {

@@ -5,6 +5,7 @@ Using SQLite database
 ## How to Install
 ```sh
 $ git clone https://github.com/lcarlesso/node-js-sqlite.git
+$ cd node-js-sqlite
 $ npm install 
 $ npm run dev
 ```
@@ -139,3 +140,6 @@ _____
 
 ## SQLite database
 The database is already populated with 30 random values from https://www.mockaroo.com/
+
+### Node version
+The Node version used was 6.9.3
