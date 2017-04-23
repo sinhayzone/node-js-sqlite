@@ -50,11 +50,12 @@ function insertProduct(product, res, db){
     var values = [name, description, price, currency];
 
     db.serialize(function () {
-        console.log('Executing: ', sql);
-        
         db.run(sql, values, function (err) {
-            if (err)
+            if (err){
+                console.error(err);
                 res.status(500).send(err);
+            }
+                
             else
                 res.send();
         });

@@ -48,8 +48,6 @@ module.exports = function(app, db) {
   });
 
   function processData(res, sql){
-    console.log('Executing: ', sql);
-    
     db.serialize(function() {
       db.all(sql, 
         function(err, rows) {
@@ -70,7 +68,6 @@ module.exports = function(app, db) {
       res.send(data);
     
     else{
-      console.error(err);
       res.status(404).send("Product not found");
     }
   }

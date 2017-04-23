@@ -57,19 +57,16 @@ function updateProduct(product, res, db){
 
     var values = [name, description, price, currency, id];
 
-    console.log('Executing: ', sql);
-
     db.serialize(function () {
         db.run(sql, values, function (err) {
-            if (err)
-                {console.error(err);
+            if (err){
+                console.error(err);
                 res.status(500).send(err);
-                }
+            }
             else
                 res.send();
         });
     });
-
 }
 
 function validateRequest(req, res) {
